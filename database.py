@@ -1,5 +1,5 @@
 import psycopg2
-from code import user, password, host, port, name
+from config import user, password, host, port, name
 from psycopg2 import OperationalError
 from insert_data import df2
 from sqlalchemy import create_engine
