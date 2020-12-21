@@ -1,6 +1,9 @@
 import pandas as pd
 import time
 from geopy.geocoders import Nominatim
+from sqlalchemy import create_engine
+
+
 df = pd.read_excel('data_energy.xlsx', sheet_name='TimeSeries_1971-2019', usecols='A:BB', engine='openpyxl')
 df.columns = df.iloc[0]
 df = df.drop([0])
@@ -39,6 +42,11 @@ df2['lon'] = pd.DataFrame(lon)
 
 df2 = df2.rename(columns = {'Country':'name', 'lat': 'latitude', 'lon': 'longitude'})
 
+
+uri = f'postgres://{user}:{password}@{host}:{port}/{name}'
+engine = create_engine(uri)
+df2.to_sql('countries', con=engine, if_exists='append', index=False)
+engine.execute("SELECT * FROM countries").fetchall()
 
 
 

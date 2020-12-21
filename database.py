@@ -1,8 +1,8 @@
 import psycopg2
 from config import user, password, host, port, name
 from psycopg2 import OperationalError
-from insert_data import df2
-from sqlalchemy import create_engine
+#from insert_data import df2
+#from sqlalchemy import create_engine
 
 """ creating connection between AWS database and our script"""
 
@@ -72,12 +72,17 @@ def create_quantities():
 
 connection = create_conection(user, password, host, port, name)
 
+
 create_products()
 create_flows()
 create_countries()
 create_quantities()
 
-uri = f'postgres://{user}:{password}@{host}:{port}/{name}'
-engine = create_engine(uri)
-df2.to_sql('countries', con=engine, if_exists='append', index=False)
-engine.execute("SELECT * FROM countries").fetchall()
+
+
+
+
+# uri = f'postgres://{user}:{password}@{host}:{port}/{name}'
+# engine = create_engine(uri)
+# df2.to_sql('countries', con=engine, if_exists='append', index=False)
+# engine.execute("SELECT * FROM countries").fetchall()
