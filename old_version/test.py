@@ -9,6 +9,8 @@ df_final = df.copy()
 df_final
 df_final = df_final.drop(["NoCountry","NoProduct","NoFlow"],axis= 1)
 df_final = df_final.replace("..", 0)
+df_final.iloc[:,3:-1] = df_final.iloc[:,3:-1].replace("c",0)
+# print(df_final.iloc[:,3:-1])
 
 df_final = df_final.transpose()
 dict_final = df_final.to_dict()
@@ -37,7 +39,7 @@ def create_total_lines(empty_list= list):
                 "product": dictionnary["Product"],
                 "flow": dictionnary["Flow"],
                 "year": year,
-                "value":dictionnary[year],
+                "value": dictionnary[year]
             }  
             # lines["country"]= dictionnary["Country"]
             # lines["product"]= dictionnary["Product"]

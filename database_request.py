@@ -1,5 +1,7 @@
 import psycopg2
 from psycopg2 import OperationalError
+from config import *
+
 
 def create_connection(db_name,db_user,db_password,db_host,db_port):
     connection = None
@@ -17,6 +19,7 @@ def create_connection(db_name,db_user,db_password,db_host,db_port):
         print(f"tu es un connard ça ne marche pas '{e}'")
     return connection
 
+
 def request_tables():
     with connection:
         with connection.cursor() as cursor:
@@ -28,13 +31,13 @@ def request_tables():
             request_products = cursor.fetchall()
         return request_countries, request_flows, request_products
 
+
 def insert_quantities(product_id, country_id, flow_id, year, value):
     with connection:
         with connection.cursor() as cursor:
             cursor.execute("INSERT INTO quantities(product_id, country_id, flow_id, year, value) VALUES(%s, %s, %s, %s, %s);",(product_id, country_id, flow_id, year, value))
             
 
-connection = create_connection("postgres","Steeven","fortotointata","energie.ccauxwk5spge.eu-west-3.rds.amazonaws.com","5432")
+connection = create_connection(name, user, password, host, port)
 
 ids_and_countries = request_tables()
-# print(ids_and_countries)
