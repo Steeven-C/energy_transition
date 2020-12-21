@@ -5,7 +5,7 @@ import psycopg2
 
 # Connection à la db
 sql_engine = create_engine(
-    "postgresql://Steeven:fortotointata@energie.ccauxwk5spge.eu-west-3.rds.amazonaws.com:5432/postgres"
+    f"postgresql://{identifiant}:{password}@{adresse}:{port}/postgres"
 )
 
 # Pour mettre toute les donnée du df de plans aille dans la db
