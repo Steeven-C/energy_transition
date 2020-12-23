@@ -109,4 +109,4 @@ for element in total_lines:
         if element["product"] == line[1]:
             element["product_id"] = line[0]
 
-print(total_lines)
+print (total_lines)

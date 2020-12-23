@@ -16,8 +16,3 @@ flows.to_sql(name="flows", con=engine, if_exists="append", index=False)
 df2.to_sql('countries', con=engine, if_exists='append', index=False)
 engine.execute("SELECT * FROM countries").fetchall()
 
-
-# partie steeven
-for element in total_lines:
-    insert_quantities(element["product_id"], element["country_id"], element["flow_id"], element["year"], element["value"])
-    print(element["product_id"], '|', element["country_id"], '|', element["flow_id"], '|', element["year"], '|', element["value"])
