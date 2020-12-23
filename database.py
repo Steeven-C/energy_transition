@@ -13,7 +13,7 @@ def create_conection(db_user, db_password, db_host, db_port, db_name):
             host=db_host,
             port=db_port,
             database=db_name)
-        print("Successful connexion")
+        print("Successful connection")
         cursor = connection.cursor()
         # Executing a SQL query
         cursor.execute("SELECT version();")
@@ -22,7 +22,6 @@ def create_conection(db_user, db_password, db_host, db_port, db_name):
         print("You are connected to - ", record, "\n")
     except OperationalError as error:
         print(f"Error while connecting to PostgreSQ {error}")
-
     return connection
 
 

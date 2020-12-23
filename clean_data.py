@@ -58,7 +58,7 @@ df_final = df.copy()
 df_final
 df_final = df_final.drop(["NoCountry", "NoProduct", "NoFlow"], axis=1)
 df_final = df_final.replace("..", 0)
-df_final.iloc[:, 3:-1] = df_final.iloc[:, 3:-1].replace("c", 0)
+df_final = df_final.replace("c", 0)
 
 
 df_final = df_final.transpose()
@@ -109,4 +109,4 @@ for element in total_lines:
         if element["product"] == line[1]:
             element["product_id"] = line[0]
 
-
+print(total_lines)
